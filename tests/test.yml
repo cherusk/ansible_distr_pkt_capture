@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: ubuntu 
   remote_user: root
   roles:
     - ansible_distr_pkt_capture

@@ -1,0 +1,5 @@
+---
+
+tcpflow_bin: /usr/bin/tcpflow
+iface: any
+flow_basin: /tmp

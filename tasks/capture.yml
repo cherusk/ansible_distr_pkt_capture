@@ -1,0 +1,17 @@
+---
+- include_vars: capture.yml
+
+- name: assemble capture expression 
+  set_fact:
+      expression: "{{ lookup('vars', inventory_hostname, default=dflt) }}"
+
+- name: capture flows
+  shell: timeout --signal=SIGTERM {{ stretch }} \
+         {{ tcpflow_bin }} \
+         -i {{ iface }} \
+         -o {{ flow_basin }} \
+         '{{ expression }}'
+  register: outcome 
+  failed_when:
+      - outcome.rc > 0 
+      - outcome.rc != 124

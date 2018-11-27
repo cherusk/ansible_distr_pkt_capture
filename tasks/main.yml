@@ -1,2 +1,7 @@
 ---
 # tasks file for ansible_distr_pkt_capture
+
+- include_vars: expressions_sample.yml 
+
+- name: do capture 
+  import_tasks: capture.yml
