@@ -3,5 +3,8 @@
 
 - include_vars: expressions_sample.yml 
 
+- name: gather kernel sk stats 
+  import_tasks: flow_sk_ctxt.yml
+
 - name: do capture 
   import_tasks: capture.yml

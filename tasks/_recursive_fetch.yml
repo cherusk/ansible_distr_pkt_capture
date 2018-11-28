@@ -1,0 +1,16 @@
+---
+
+# !Achtung!
+# Simplistic, technical impromptu down to the 
+# brittleness of the upstream synchronize module.
+
+- name: discern captures
+  find:
+    paths: "{{ flow_basin }}"
+  register: capture_files 
+
+- name: collecively fetch captures
+  fetch:
+      src: "{{ item.path }}"
+      dest: "{{ controller_basin }}"
+  loop: "{{ capture_files.files }}"

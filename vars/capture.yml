@@ -3,3 +3,4 @@
 tcpflow_bin: /usr/bin/tcpflow
 iface: any
 flow_basin: /tmp
+controller_basin: /var/opt/distr_capture/

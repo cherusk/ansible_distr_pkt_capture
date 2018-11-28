@@ -1,7 +1,7 @@
 ---
 - include_vars: capture.yml
 
-- name: assemble capture expression 
+- name: assemble capture expression
   set_fact:
       expression: "{{ lookup('vars', inventory_hostname, default=dflt) }}"
 
@@ -11,7 +11,10 @@
          -i {{ iface }} \
          -o {{ flow_basin }} \
          '{{ expression }}'
-  register: outcome 
+  register: outcome
   failed_when:
-      - outcome.rc > 0 
+      - outcome.rc > 0
       - outcome.rc != 124
+
+- name: harvest captures
+  import_tasks: _recursive_fetch.yml

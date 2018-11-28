@@ -1,0 +1,12 @@
+---
+# Gathering current kernel TCP flow dynamics preliminary to capture.
+
+- include_vars: sk_stats.yml
+
+- name: gather tcp flow socket stats
+  shell: "{{ ss2 }} --tcp --process"
+  register: tcp_flows_ctxt
+
+- name: parse tcp flow socket stats 
+  set_fact:
+      tcp_flows_cxt: "{{ tcp_flows_ctxt.stdout | from_json }}"
