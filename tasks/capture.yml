@@ -8,8 +8,9 @@
 - name: capture flows
   shell: timeout --signal=SIGTERM {{ stretch }} \
          {{ tcpflow_bin }} \
-         -i {{ iface }} \
-         -o {{ flow_basin }} \
+         -i {{ capture_iface }} \
+         -o {{ gather_basin }} \
+         -K \
          '{{ expression }}'
   register: outcome
   failed_when:

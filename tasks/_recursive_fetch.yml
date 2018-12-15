@@ -6,7 +6,7 @@
 
 - name: discern captures
   find:
-    paths: "{{ flow_basin }}"
+    paths: "{{ gather_basin }}"
   register: capture_files 
 
 - name: collecively fetch captures
