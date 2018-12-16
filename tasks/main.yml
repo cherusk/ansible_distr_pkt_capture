@@ -8,3 +8,6 @@
 
 - name: do capture 
   import_tasks: capture.yml
+
+- name: do flow context association
+  import_tasks: associate.yml

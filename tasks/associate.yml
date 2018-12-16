@@ -1,0 +1,25 @@
+---
+
+- block:
+    - name: accrue capture files
+      find:
+        paths: "{{ controller_basin }}"
+        file_type: any
+        recurse: yes
+        patterns: '*.pcap'
+      register: capture_files 
+
+    - name: build flow associator
+      template:
+        src: flow_associator.j2
+        dest: "{{ flow_associator }}"
+        mode: 0544
+    
+    - name: run flow associator
+      shell: "{{ flow_associator }}"
+    
+    - name: associator hygiene
+      file: 
+        path: "{{ flow_associator }}"
+        state: absent
+  delegate_to: localhost

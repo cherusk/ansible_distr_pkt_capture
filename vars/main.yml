@@ -1,2 +1,5 @@
 ---
 # vars file for ansible_distr_pkt_capture
+#
+
+flow_associator: "{{ controller_basin }}/flow_associator.py"
