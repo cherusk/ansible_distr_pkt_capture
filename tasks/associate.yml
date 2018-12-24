@@ -1,25 +1,36 @@
 ---
 
+- include_vars: capture.yml
+
 - block:
     - name: accrue capture files
       find:
-        paths: "{{ controller_basin }}"
+        paths: "{{ controller_basin }}/{{ item }}"
         file_type: any
         recurse: yes
         patterns: '*.pcap'
       register: capture_files 
+      with_items: "{{ ansible_play_hosts }}"
 
     - name: build flow associator
       template:
-        src: flow_associator.j2
+        #src: flow_associator.j2
+        src: ./files/logic/flow_associator.py
         dest: "{{ flow_associator }}"
         mode: 0544
     
     - name: run flow associator
       shell: "{{ flow_associator }}"
+      register: associated_ctxt
+
+    - name: retain association context
+      copy:
+          content: "{{ associated_ctxt.stdout }}"
+          dest: "{{ associated_context }}"
     
     - name: associator hygiene
       file: 
         path: "{{ flow_associator }}"
         state: absent
   delegate_to: localhost
+  run_once: true

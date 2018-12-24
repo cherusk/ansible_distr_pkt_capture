@@ -7,6 +7,6 @@
   shell: "{{ ss2 }} --tcp --process"
   register: tcp_flows_ctxt
 
-- name: parse tcp flow socket stats 
+- name: preen tcp flow socket stats
   set_fact:
-      tcp_flows_cxt: "{{ tcp_flows_ctxt.stdout | from_json }}"
+      tcp_flows_cxt: "{{ tcp_flows_ctxt.stdout }}"

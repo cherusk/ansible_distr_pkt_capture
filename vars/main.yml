@@ -3,3 +3,4 @@
 #
 
 flow_associator: "{{ controller_basin }}/flow_associator.py"
+associated_context: "{{ controller_basin }}/associated_context.json"
