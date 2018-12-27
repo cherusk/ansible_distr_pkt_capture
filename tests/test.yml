@@ -1,5 +1,9 @@
 ---
 - hosts: ubuntu 
   remote_user: root
-  roles:
-    - ansible_distr_pkt_capture
+  tasks:
+    - include_role:
+        name: ansible_distr_pkt_capture
+      vars:
+          processing_logic:
+              - ../tests/retransmitter.yml
