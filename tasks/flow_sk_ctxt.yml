@@ -4,7 +4,7 @@
 - include_vars: sk_stats.yml
 
 - name: gather tcp flow socket stats
-  shell: "{{ ss2 }} --tcp --process"
+  shell: "{{ ss2_cmd }} --tcp --process"
   register: tcp_flows_ctxt
 
 - name: preen tcp flow socket stats

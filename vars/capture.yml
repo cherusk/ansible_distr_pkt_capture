@@ -1,7 +1,7 @@
 ---
 
-tcpflow_bin: /usr/bin/tcpflow
-capture_iface: any
-gather_basin: /tmp # location to gather pcap flow on minor/remote
-controller_basin: /var/opt/distr_capture # location for centric aggregation of gathered flows
-stretch: 10 # gathering time span in 's' for seconds (the default), 'm' for minutes, 'h' for hours or 'd' for days
+_tcpflow_cmd: "{{ tcpflow_cmd | default(/usr/bin/tcpflow) }}" 
+_capture_iface: "{{ capture_iface | default(any) }}"
+_gather_basin: "{{ gather_basin | default(/tmp) }}" # location to gather pcap flow on minor/remote
+_gather_stretch: "{{ stretch | default(10) }}" # gathering time span in 's' for seconds (the default), 'm' for minutes, 'h' for hours or 'd' for days
+_controller_basin: "{{ controller_basin | default(/var/opt/distr_capture) }}"  # location for centric aggregation of gathered flows

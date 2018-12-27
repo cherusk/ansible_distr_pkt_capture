@@ -2,5 +2,7 @@
 # vars file for ansible_distr_pkt_capture
 #
 
-flow_associator: "{{ controller_basin }}/flow_associator.py"
-associated_context: "{{ controller_basin }}/associated_context.json"
+flow_associator: "{{ _controller_basin }}/flow_associator.py"
+associated_context: "{{ _controller_basin }}/associated_context.json"
+
+_processing_logic: "{{ processing_logic | default([]) }}" # custom external post processing

@@ -6,14 +6,14 @@
 
 - name: discern captures
   find:
-    paths: "{{ gather_basin }}"
+    paths: "{{ _gather_basin }}"
     patterns: "*.pcap"
   register: capture_files 
 
 - name: collecively fetch captures
   fetch:
       src: "{{ item.path }}"
-      dest: "{{ controller_basin }}"
+      dest: "{{ _controller_basin }}"
   loop: "{{ capture_files.files }}"
 
 - name: capture hygiene

@@ -5,7 +5,7 @@ import os
 import ipaddress as ipa
 import collections as col
 
-_controller_basin = "{{ controller_basin }}"
+__controller_basin = "{{ _controller_basin }}"
 _capture_files = {{ capture_files }}
 _tcp_flow_context = {
 {% for hv_k, hv_v in hostvars.iteritems() %}
@@ -124,6 +124,6 @@ class Associator:
         return self.result
 
 if __name__ == "__main__":
-    associator = Associator(_tcp_flow_context, _controller_basin)
+    associator = Associator(_tcp_flow_context, __controller_basin)
     associator.act(_capture_files)
     print json.dumps(associator.result)

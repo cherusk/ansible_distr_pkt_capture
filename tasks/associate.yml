@@ -5,7 +5,7 @@
 - block:
     - name: accrue capture files
       find:
-        paths: "{{ controller_basin }}/{{ item }}"
+        paths: "{{ _controller_basin }}/{{ item }}"
         file_type: any
         recurse: yes
         patterns: '*.pcap'

@@ -3,8 +3,8 @@
 
 - name: processor vars
   set_fact:
-    screener_deposit: "{{ controller_basin }}/screener.py"
-    outcome_desposit: "{{ controller_basin }}/top_retransmitter.json"
+    screener_deposit: "{{ _controller_basin }}/screener.py"
+    outcome_desposit: "{{ _controller_basin }}/top_retransmitter.json"
 
 - block:
   - name: build screener

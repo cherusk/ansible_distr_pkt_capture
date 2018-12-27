@@ -14,4 +14,4 @@
 
 - name: do custom pkt processing
   include_tasks: "{{ item }}"
-  with_items: "{{ processing_logic }}"
+  with_items: "{{ _processing_logic }}"

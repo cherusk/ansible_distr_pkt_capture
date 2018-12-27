@@ -6,10 +6,10 @@
       expression: "{{ lookup('vars', inventory_hostname, default=dflt) }}"
 
 - name: capture flows
-  shell: timeout --signal=SIGTERM {{ stretch }} \
-         {{ tcpflow_bin }} \
-         -i {{ capture_iface }} \
-         -o {{ gather_basin }} \
+  shell: timeout --signal=SIGTERM {{ _gather_stretch }} \
+         {{ _tcpflow_cmd }} \
+         -i {{ _capture_iface }} \
+         -o {{ _gather_basin }} \
          -K \
          '{{ expression }}'
   register: outcome
