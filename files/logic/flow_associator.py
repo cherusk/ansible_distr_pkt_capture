@@ -9,7 +9,7 @@ _controller_basin = "{{ controller_basin }}"
 _capture_files = {{ capture_files }}
 _tcp_flow_context = {
 {% for hv_k, hv_v in hostvars.iteritems() %}
-'{{ hv_k }}' : {{ hv_v.tcp_flows_cxt }}
+'{{ hv_k }}' : {{ hv_v.tcp_flows_ctxt }}
 {% if not loop.last %}
 ,
 {% endif %}
@@ -117,9 +117,9 @@ class Associator:
                 ss_flow = self.f_association_map[origin][flow_key]
                 self.result[origin][flow_key]['holder'] = ss_flow['usr_ctxt']
                 if src_addr == ipa.ip_address(ss_flow['src']):
-                    self.result[origin][flow_key]['pcap']['egress'].append(pcap_file_n)
+                    self.result[origin][flow_key]['pcap']['egress'].append(f['path'])
                 else:
-                    self.result[origin][flow_key]['pcap']['ingress'].append(pcap_file_n)
+                    self.result[origin][flow_key]['pcap']['ingress'].append(f['path'])
 
         return self.result
 

@@ -9,4 +9,4 @@
 
 - name: preen tcp flow socket stats
   set_fact:
-      tcp_flows_cxt: "{{ tcp_flows_ctxt.stdout }}"
+      tcp_flows_ctxt: "{{ tcp_flows_ctxt.stdout }}"
