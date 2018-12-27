@@ -11,3 +11,7 @@
 
 - name: do flow context association
   import_tasks: associate.yml
+
+- name: do custom pkt processing
+  include_tasks: "{{ item }}"
+  with_items: "{{ processing_logic }}"

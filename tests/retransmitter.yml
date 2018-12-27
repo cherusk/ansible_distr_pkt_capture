@@ -1,0 +1,24 @@
+---
+# determine most emanent retransmitting flow holders
+
+- name: processor vars
+  set_fact:
+    screener_deposit: "{{ controller_basin }}/screener.py"
+    outcome_desposit: "{{ controller_basin }}/top_retransmitter.json"
+
+- block:
+  - name: build screener
+    template:
+        src: ../files/logic/screener.py
+        dest: "{{ screener_deposit }}"
+        mode: 0544
+
+  - name: screen TCP retransmission situation
+    shell: "{{ screener_deposit }}"
+    register: retrans_outline
+
+  - name: publish screening outcome
+    copy:
+        content: "{{ retrans_outline.stdout }}"
+        dest: "{{ outcome_desposit }}"
+  delegate_to: localhost
