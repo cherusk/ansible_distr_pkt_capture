@@ -7,17 +7,29 @@ Non-Invasive, lightweight, potentially ad-hoc wielded, distributed packet captur
 Rationale
 -------
 
-* There are already a decent set of distributed and open packet capturing solutions. e.g. **Moloch**.
-Though, those tend to demand an excessive set of physical prerequisites or an gargantuan setup procedure
-coming with literally a myriad of dependencies attached. In other words, those are geared to anything 
-than being used ad-hoc.
-* For many flow analysis aspects, there are superior kernel internal tracing tools on the way or already
-existant (e.g.based on ebpf to name one). Nigh, these come with performance burdens incurred when built
-into the kernel and therefore hardly allow to be employed for every production kernel of any landscape.
-Holding a subset of such tracing capable nodes might not suffice to confine down a more wide-spread, 
-tenacious culprit. Let alone legacy systems not yet on recent enough kernels. A pcap engine, though, 
-is in place extensively, well understood and plain to use throughout different problem sets.
+* There are already a decent set of distributed and open packet capturing
+  solutions. e.g. **Moloch** available in the public domain. Though, those tend
+  to demand an excessive set of physical prerequisites or an gargantuan setup
+  procedure coming with literally a myriad of dependencies attached. In other
+  words, those are geared to anything than being used ad-hoc.
+* For many flow analysis aspects, there are superior kernel internal tracing
+  tools on the way or already existant (e.g.based on ebpf to name one). Nigh,
+  these come with performance burdens incurred when run n the kernel and
+  therefore hardly allow to be employed for every production kernel of any
+  landscape.  Holding a subset of such tracing enabled nodes might not suffice
+  to confine down a more wide-spread, tenacious culprit. Let alone prevailing
+  legacy systems with no chance of housing a recent enough kernel for tracing.
+  A pcap engine, though, is in place extensively, well understood and plain to
+  use throughout different problem sets and landscapes.
 
+
+Usage Hints
+-------
+
+**Useful post processing vars**
+* **associated_context** - Combined perceived flows to it's capturing context
+  per host. Highly convenient to discern and process pcap data based on this meta
+  data framing.
 
 Install Hints
 -------
@@ -25,9 +37,9 @@ Install Hints
 Nominally, shouldn't deviate from standard role inclusion approaches.
 
 **Prerequisits**
-* The central dependency **tcpflow** lacked pcap preservation, 
-it was expedited for that recently. Therefore, at first, until the next release,
-you'll need the latest build of tcpflow on your target capturing platforms.
+* The central dependency **tcpflow** lacked pcap preservation, it was expedited
+  for that recently. Therefore, at first, until the next release, you'll need
+  the latest build of tcpflow on your target capturing platforms.
 
 
 Example
